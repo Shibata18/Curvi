@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Cadastro() {
+export default function Cursos() {
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [nome, setNome] = useState('');
