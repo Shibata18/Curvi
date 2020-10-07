@@ -1,4 +1,6 @@
 'use strict'
+const User = use('App/Models/User');
+const Experiencia = use('App/Models/Experiencia');
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -41,7 +43,23 @@ class ExperienciaController {
    * @param {Response} ctx.response
    */
   async store ({ request, response }) {
+    const user_email = await User.findByOrFail("email", request.header('email'))
+    if (user_email) {
+      const data = request.only([
+        "user_email",
+        "nome_empresa",
+        "cargo",
+        "atividade_exercida",
+        "periodo",
+      ]);
+      const experiencia = await Experiencia.create(data);
+      return experiencia;
+    }else{
+      return response.json({"message":'erro'})
+    }
   }
+  
+  
 
   /**
    * Display a single experiencia.

@@ -5,7 +5,7 @@ const Schema = use('Schema')
 
 class RedeSocialSchema extends Schema {
   up () {
-    this.create('rede_socials', (table) => {
+    this.create('social_medias', (table) => {
       table.increments()
       table.string('user_email').unsigned().references('email').inTable('users').onDelete('CASCADE').onUpdate('CASCADE')
       table.string('facebook')

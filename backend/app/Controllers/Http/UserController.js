@@ -52,13 +52,14 @@ class UserController {
     }
     async allData({ request }) {
         const user = await User.findByOrFail("email", request.header('email'));
+        //            .raw('select * from users inner join cursos on cursos.user_email = users.email inner join experiencias on experiencias.user_email = users.email                    inner join objetivos on objetivos.user_email = users.email inner join social_medias on social_medias.user_email = users.email; ')
         const dados = await Database
-            .select('*')
             .from('users')
             .innerJoin('cursos', 'users.email', 'cursos.user_email')
-           /*  .innerJoin('experiencias', 'users.email', 'experiencias.user_email')
-            .innerJoin('rede_socials', 'users.email', 'rede_socials.user_email')
-            .innerJoin('objetivos', 'users.email', 'objetivos.user_email') */
+            .innerJoin('experiencias', 'users.email', 'experiencias.user_email')
+            .innerJoin('social_medias', 'users.email', 'social_medias.user_email')
+            .innerJoin('objetivos', 'users.email', 'objetivos.user_email')
+            .where('users.email',user.email)
         return dados;
     }
 }

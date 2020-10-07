@@ -1,4 +1,6 @@
 'use strict'
+const User = use('App/Models/User');
+const Objetivo = use('App/Models/Objetivo');
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -41,6 +43,21 @@ class ObjetivoController {
    * @param {Response} ctx.response
    */
   async store ({ request, response }) {
+    const user_email = await User.findByOrFail("email", request.header('email'))
+    if (user_email) {
+      const data = request.only([
+        "user_email",
+        "objetivo",
+        "habilidades",
+        "motivacao",
+        "hobbies",
+      ]);
+      const objetivo = await Objetivo.create(data);
+      return objetivo;
+    }else{
+      return response.json({"message":'erro'})
+    }
+  
   }
 
   /**

@@ -1,18 +1,5 @@
 'use strict'
 
-/*
-|--------------------------------------------------------------------------
-| Routes
-|--------------------------------------------------------------------------
-|
-| Http routes are entry points to your web application. You can create
-| routes for different URLs and bind Controller actions to them.
-|
-| A complete guide on routing is available here.
-| http://adonisjs.com/docs/4.1/routing
-|
-*/
-
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
@@ -26,4 +13,7 @@ Route.get('/resume','UserController.allData').middleware('auth:jwt')//Rota para 
 Route.post('/user','UserController.store')//Rota para cadastrar o usuário no sistema
 Route.put('/user','UserController.update').middleware('auth:jwt')//Rota para atualizar os dados de um usuário no sistema
 Route.post('/course','CursoController.store').middleware('auth:jwt')//Rota para cadastrar cursos
+Route.post('/experiencia','ExperienciaController.store').middleware('auth:jwt')//Rota para cadastrar Experiencia
+Route.post('/objetivo','ObjetivoController.store').middleware('auth:jwt')//Rota para cadastrar os Objetivos
+Route.post('/socialmedia','SocialMediaController.store').middleware('auth:jwt')//Rota para cadastrar os Objetivos
 //Route.get('/perfil','UserController.profile').middleware('auth:jwt')//Rota para visualizar os dados de um usuário no sistema

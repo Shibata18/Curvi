@@ -1,5 +1,6 @@
 'use strict'
-
+const User = use('App/Models/User');
+const SocialMedia = use('App/Models/SocialMedia');
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -17,7 +18,7 @@ class SocialMediaController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response, view }) {
+  async index({ request, response, view }) {
   }
 
   /**
@@ -29,7 +30,7 @@ class SocialMediaController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async create ({ request, response, view }) {
+  async create({ request, response, view }) {
   }
 
   /**
@@ -40,8 +41,28 @@ class SocialMediaController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, response }) {
+  async store({ request, response }) {
+    const user_email = await User.findByOrFail("email", request.header('email'))
+    if (user_email) {
+      const data = request.only([
+        "user_email",
+        "facebook",
+        "instagram",
+        "telegram",
+        "whatsapp",
+        "linkedin",
+        "github",
+        "outros",
+      ]);
+      const social = await SocialMedia.create(data);
+      return social;
+    } else {
+      return response.json({ "message": 'erro' })
+    }
+
   }
+
+
 
   /**
    * Display a single socialmedia.
@@ -52,7 +73,7 @@ class SocialMediaController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show ({ params, request, response, view }) {
+  async show({ params, request, response, view }) {
   }
 
   /**
@@ -64,7 +85,7 @@ class SocialMediaController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async edit ({ params, request, response, view }) {
+  async edit({ params, request, response, view }) {
   }
 
   /**
@@ -75,7 +96,7 @@ class SocialMediaController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update ({ params, request, response }) {
+  async update({ params, request, response }) {
   }
 
   /**
@@ -86,7 +107,7 @@ class SocialMediaController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy ({ params, request, response }) {
+  async destroy({ params, request, response }) {
   }
 }
 
