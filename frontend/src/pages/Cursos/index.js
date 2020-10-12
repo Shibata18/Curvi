@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -36,28 +36,29 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Cursos() {
   const classes = useStyles();
-  const [email, setEmail] = useState('');
-  const [nome, setNome] = useState('');
-  const [password, setPassword] = useState('');
-  const [address, setAddress] = useState('');
-  const [telefone, setTelefone] = useState('');
-  const [area_formacao, setArea_Formacao] = useState('');
-  const [profissao, setProfissao] = useState('');
-  const [date_birth, setDate_birth] = useState('');
+  const [nome_curso, setNomeCurso] = useState('');
+  const [instituicao, setInstituicao] = useState('');
+  const [ano_conclusao, setAnoConclusao] = useState('');
   const history = useHistory();
-
+  const user_email = localStorage.getItem('email')
   async function handleSubmit(e){
     e.preventDefault()
     try {
-      const data = {email,nome,password,address,telefone,area_formacao,profissao,date_birth};
-      const response = await api.post('/user',data)
+      const data = {nome_curso,instituicao,ano_conclusao,user_email};
+      const response = await api.post('/course',data,{headers:{email:user_email}})
       console.log(response.data);
       if (response) {
-        alert('Cadastrado com sucesso')
-        history.push('/cursos')
+        alert('Dados Adicionado com sucesso')
+        let resposta = window.confirm("Deseja Adicionar Mais Cursos?")
+        if(resposta){
+          window.location.reload()
+          history.push('/cursos')
+        }else{
+          history.push('/socialmedia')
+        }
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
     }
   }
   return (
@@ -65,25 +66,25 @@ export default function Cursos() {
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
+          <BusinessCenterIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Preencha com os seus Dados
+          Preencha o seu curso
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                autoComplete="nome"
-                name="nome"
+                autoComplete="nomeCurso"
+                name="nomeCurso"
                 variant="outlined"
                 required
                 fullWidth
-                id="nome"
+                id="nomeCurso"
                 type='text'
-                label="Nome Completo"
-                value={nome}
-                onChange={e => setNome(e.target.value)}
+                label="Nome do Curso Completo"
+                value={nome_curso}
+                onChange={e => setNomeCurso(e.target.value)}
                 autoFocus
               />
             </Grid>
@@ -92,99 +93,28 @@ export default function Cursos() {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
-                type='email'
-                label="Email"
-                name="email"
-                autoComplete="email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                placeholder="joel@gmail.com"
+                name="instituicao"
+                label="instituição de ensino"
+                type="text"
+                id="instituicao"
+                autoComplete="instituicao"
+                value={instituicao}
+                onChange={e => setInstituicao(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
+                autoComplete="anoConclusao"
+                name="anoConclusao"
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
-                label="Senha"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                autoComplete="address"
-                name="address"
-                variant="outlined"
-                required
-                fullWidth
-                id="address"
+                id="anoConclusao"
                 type='text'
-                label="Endereço Completo"
-                value={address}
-                onChange={e => setAddress(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="telefone"
-                label="Telefone"
-                name="telefone"
-                autoComplete="telefone"
-                value={telefone}
-                onChange={e => setTelefone(e.target.value)}
-                placeholder='(61) 99039-2134'
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="area_formacao"
-                label="Área de Formação"
-                type="text"
-                id="area_formacao"
-                autoComplete="area_formacao"
-                value={area_formacao}
-                onChange={e => setArea_Formacao(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <label>Data de Nascimento</label>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="date_birth"
-                type="date"
-                id="date_birth"
-                autoComplete="date_birth"
-                value={date_birth}
-                onChange={e => setDate_birth(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="profissao"
-                label="Profissão"
-                type="text"
-                id="profissao"
-                autoComplete="profissao"
-                value={profissao}
-                onChange={e => setProfissao(e.target.value)}
-                placeholder="Engenheiro Civil"
+                label="Ano de Conclusão"
+                placeholder='Dezembro de 2020'
+                value={ano_conclusao}
+                onChange={e => setAnoConclusao(e.target.value)}
               />
             </Grid>
           </Grid>
@@ -195,7 +125,7 @@ export default function Cursos() {
             color="primary"
             className={classes.submit}
           >
-            Cadastrar
+            Adicionar
           </Button>
         </form>
       </div>
