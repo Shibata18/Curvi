@@ -45,7 +45,7 @@ export default function Cadastro() {
   const [profissao, setProfissao] = useState('');
   const [date_birth, setDate_birth] = useState('');
   const history = useHistory();
-
+  localStorage.setItem('email',email);
   async function handleSubmit(e){
     e.preventDefault()
     try {
@@ -57,7 +57,7 @@ export default function Cadastro() {
         history.push('/cursos')
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.data);
     }
   }
   return (
