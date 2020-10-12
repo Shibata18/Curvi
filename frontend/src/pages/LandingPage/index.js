@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import DescriptionIcon from '@material-ui/icons/Description';
-import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
+//import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -53,7 +53,7 @@ export default function LandingPage() {
             Aqui você pode criar, editar e personalizar o seu currículo de maneira rápida e prática
         </Typography>
                 <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
+                 {/*    <Grid item xs={12} sm={6}>
                         <Link to='/login' className={classes.link}> <Button
                             type="submit"
                             fullWidth
@@ -61,19 +61,19 @@ export default function LandingPage() {
                             color="primary"
                             startIcon={<MeetingRoomIcon />}
                         >
-                            Já tenho Cadastro
+                            Tenho Cadastro
           </Button></Link>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
+                    </Grid> */}
+                    <Grid item xs={12} >
                         <Link to='/cadastrar' className={classes.link}>
                             <Button
                                 type="submit"
                                 fullWidth
-                                variant="contained"
-                                color="secondary"
+                                variant="outlined"
+                                color="inherit"
                                 startIcon={<DescriptionIcon />}
                             >
-                                Fazer Currículo
+                              Fazer Currículo
           </Button>
                         </Link>
                     </Grid>
