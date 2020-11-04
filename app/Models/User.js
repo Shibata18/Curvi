@@ -47,7 +47,10 @@ class User extends Model {
     return this.hasOne('App/Models/Goal')
   }
   socialMedia(){
-    return this.hasOne('App/Models/SoacialMedia')
+    return this.hasOne('App/Models/SocialMedia')
+  }
+  images(){
+    return this.hasOne('App/Models/Image')
   }
 }
 

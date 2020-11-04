@@ -20,6 +20,10 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 Route.post('/user','UserController.store')
+//Route.get('/user','UserController.index')
+Route.get('/user/:id','UserController.show')
+Route.post('/user/:id/image','ImageController.store')
+Route.get('images/:path', 'ImageController.show')
 Route.post('/experience','ExperienceController.store')
 Route.post('/degree','DegreeController.store')
 Route.post('/extraCourse','ExtraCourseController.store')

@@ -1,5 +1,6 @@
 'use strict'
 const User = use("App/Models/User");
+const Database = use("Database");
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -19,18 +20,14 @@ class UserController {
    * @param {View} ctx.view
    */
   async index({ request, response, view }) {
-  }
-
-  /**
-   * Render a form to be used for creating a new experience.
-   * GET users/create
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async create({ request, response, view }) {
+    const user = await await Database
+    .table('users')
+    .innerJoin('degrees', 'users.id', 'degrees.user_id')
+    .innerJoin('experiences', 'users.id', 'experiences.user_id')
+    .innerJoin('goals', 'users.id', 'goals.user_id')
+    .innerJoin('social_medias', 'users.id', 'social_medias.user_id')
+    .innerJoin('extra_courses', 'users.id', 'extra_courses.user_id')
+    return user
   }
 
   /**
@@ -57,19 +54,11 @@ class UserController {
    * @param {View} ctx.view
    */
   async show({ params, request, response, view }) {
+    const user = await User.findOrFail(params.id)
+    await user.loadMany(['experience', 'degree','extraCourse','goal','socialMedia','images'])
+    return user
   }
 
-  /**
-   * Render a form to update an existing experience.
-   * GET users/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit({ params, request, response, view }) {
-  }
 
   /**
    * Update experience details.
