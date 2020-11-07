@@ -2,7 +2,7 @@ var doc = new jsPDF()
     $('#gerarPDF').on('click', function gerarPDF() {
         $.ajax({
             type: 'GET',
-            url: `http://localhost:3333/user/${$('#user_id').val()}`,
+            url: `https://curvi-api.herokuapp.com/user/${$('#user_id').val()}`,
             success: function (dados) {
                 doc.text(5, 5, 'Currículo Gerado pela Curvi')
                 document.getElementsByClassName('content').style = 'display:none'
