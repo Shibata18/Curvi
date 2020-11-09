@@ -1,5 +1,10 @@
 var doc = new jsPDF()
     $('#gerarPDF').on('click', function gerarPDF() {
+        $('.replace').html(`
+        <button class="btn btn-primary" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Carregando...
+      </button>`)
         $.ajax({
             type: 'GET',
             url: `https://curvi-api.herokuapp.com/user/${$('#user_id').val()}`,
@@ -64,11 +69,11 @@ var doc = new jsPDF()
                         //     <p>${ dados.socialMedia.instagram}</p>
                         //     `) 
                 }
-                //doc.fromHTML(document.body);
-                //doc.save('a4.pdf')
                 doc.fromHTML($('.response').get(0), 10, 10, { 'width': 180 });
-                doc.autoPrint();
-                doc.output("dataurlnewwindow")
+                doc.save(`${dados.name}.pdf`)
+                //doc.autoPrint();
+                //doc.output("dataurlnewwindow")
+                $('.replace').html('<button class="btn btn-success" disabled>Concluído</button>')
             },
             error: function (dados) {
                 console.log(dados);
