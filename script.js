@@ -48,9 +48,9 @@ var doc = new jsPDF()
                             `)  
                 }
                 doc.fromHTML($('.response').get(0), 10, 10, { 'width': 180 });
-                //doc.save(`${dados.name}.pdf`)
-                doc.autoPrint();
-                doc.output("dataurlnewwindow")
+                doc.save(`${dados.name}.pdf`)
+                //doc.autoPrint();
+                //doc.output("dataurlnewwindow")
                 $('.replace').html('<button class="btn btn-success" disabled>Concluído</button>')
             },
             error: function (dados) {
