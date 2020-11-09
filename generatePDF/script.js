@@ -11,6 +11,22 @@ var doc = new jsPDF()
             success: function (dados) {
                 doc.text(5, 5, 'Currículo Gerado pela Curvi')
                 console.log(dados);
+                /** "name", 
+      "goal", 
+      "email", 
+      "address", 
+      "cellphone", 
+      "state", 
+      "city",
+      "courseName",
+      "courseSchool",
+      "courseStartYear",
+      "courseEndYear",
+      "companyOccupation",
+      "companyName",
+      "companyStart",
+      "companyEnd",
+      "companyDescription" */
                 for (let i in dados) {
                     $('#profile').html(
                         `

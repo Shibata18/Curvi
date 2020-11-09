@@ -34,21 +34,6 @@ class User extends Model {
   tokens () {
     return this.hasMany('App/Models/Token')
   }
-  experience(){
-    return this.hasMany('App/Models/Experience')
-  }
-  degree(){
-    return this.hasMany('App/Models/Degree')
-  }
-  extraCourse(){
-    return this.hasMany('App/Models/ExtraCourse')
-  }
-  goal(){
-    return this.hasOne('App/Models/Goal')
-  }
-  socialMedia(){
-    return this.hasOne('App/Models/SocialMedia')
-  }
   images(){
     return this.hasOne('App/Models/Image')
   }

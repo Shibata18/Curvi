@@ -38,7 +38,24 @@ class UserController {
    * @param {Response} ctx.response
    */
   async store({ request, response }) {
-    const data = request.only(['name', 'goal', 'email', 'address', 'cellphone', 'state', 'city'])
+    const data = request.only([
+      "name", 
+      "goal", 
+      "email", 
+      "address", 
+      "cellphone", 
+      "state", 
+      "city",
+      "courseName",
+      "courseSchool",
+      "courseStartYear",
+      "courseEndYear",
+      "companyOccupation",
+      "companyName",
+      "companyStart",
+      "companyEnd",
+      "companyDescription"
+    ])
     const user = await User.create(data)
     return user
   }
@@ -54,7 +71,7 @@ class UserController {
    */
   async show({ params, request, response, view }) {
     const user = await User.findOrFail(params.id)
-    await user.loadMany(['experience', 'degree', 'extraCourse', 'socialMedia', 'images'])
+    //await user.loadMany(['experience', 'degree', 'extraCourse', 'socialMedia', 'images'])
     return user
   }
 
