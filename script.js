@@ -10,13 +10,11 @@ var doc = new jsPDF()
                     $('#profile').html(
                         `
                             <h2>Dados Pessoais</h2>
-                            <p>${dados.fullname}</p>
-                            <p>${dados.occupation}</p>
-                            <p>${dados.address}</p> 
+                            <p>${dados.name}</p>
                             <p>${dados.email}</p>
-                            <p>Telefone: ${dados.homephone}</p>
-                            <p>Celular: ${dados.mobilephone}</p>
-                            <p>${dados.birthday}</p>
+                            <p>${dados.address}</p> 
+                            <p>${dados.city} - ${dados.state}</p>
+                            <p>Celular: ${dados.cellphone}</p>
                             `)
                     //doc.text(dados.fullname)
                     //doc.text(dados.occupation)
@@ -57,8 +55,7 @@ var doc = new jsPDF()
                         $('#goal').html(
                             `
                             <h3>Objetivo</h3>
-                            <p>${ dados.goal.goalDescription}</p> 
-                            <p>${ dados.goal.skills}</p>
+                            <p>${ dados.goal}</p> 
                             `) 
                         $('#socialMedia').html(
                             `
