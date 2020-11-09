@@ -5,7 +5,7 @@ var doc = new jsPDF()
             url: `https://curvi-api.herokuapp.com/user/${$('#user_id').val()}`,
             success: function (dados) {
                 doc.text(5, 5, 'Currículo Gerado pela Curvi')
-                document.getElementsByClassName('content').style = 'display:none'
+                console.log(dados);
                 for (let i in dados) {
                     $('#profile').html(
                         `
@@ -57,13 +57,12 @@ var doc = new jsPDF()
                             <h3>Objetivo</h3>
                             <p>${ dados.goal}</p> 
                             `) 
-                        $('#socialMedia').html(
-                            `
-                            <h3>Redes Sociais</h3>
-                            <p>${ dados.socialMedia.telegram}</p> 
-                            <p>${ dados.socialMedia.instagram}</p>
-                            `) 
-                    console.log(dados);
+                        // $('#socialMedia').html(
+                        //     `
+                        //     <h3>Redes Sociais</h3>
+                        //     <p>${ dados.socialMedia.telegram}</p> 
+                        //     <p>${ dados.socialMedia.instagram}</p>
+                        //     `) 
                 }
                 //doc.fromHTML(document.body);
                 //doc.save('a4.pdf')
