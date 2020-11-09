@@ -21,12 +21,11 @@ class UserController {
    */
   async index({ request, response, view }) {
     const user = await await Database
-    .table('users')
-    .innerJoin('degrees', 'users.id', 'degrees.user_id')
-    .innerJoin('experiences', 'users.id', 'experiences.user_id')
-    .innerJoin('goals', 'users.id', 'goals.user_id')
-    .innerJoin('social_medias', 'users.id', 'social_medias.user_id')
-    .innerJoin('extra_courses', 'users.id', 'extra_courses.user_id')
+      .table('users')
+      .innerJoin('degrees', 'users.id', 'degrees.user_id')
+      .innerJoin('experiences', 'users.id', 'experiences.user_id')
+      .innerJoin('social_medias', 'users.id', 'social_medias.user_id')
+      .innerJoin('extra_courses', 'users.id', 'extra_courses.user_id')
     return user
   }
 
@@ -39,7 +38,7 @@ class UserController {
    * @param {Response} ctx.response
    */
   async store({ request, response }) {
-    const data = request.only([    'name',     'goal',     'email',     'address',     'cellphone',     'state',      'city'])
+    const data = request.only(['name', 'goal', 'email', 'address', 'cellphone', 'state', 'city'])
     const user = await User.create(data)
     return user
   }
@@ -55,7 +54,7 @@ class UserController {
    */
   async show({ params, request, response, view }) {
     const user = await User.findOrFail(params.id)
-    await user.loadMany(['experience', 'degree','extraCourse','goal','socialMedia','images'])
+    await user.loadMany(['experience', 'degree', 'extraCourse', 'socialMedia', 'images'])
     return user
   }
 
