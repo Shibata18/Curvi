@@ -6,8 +6,10 @@
 <html lang="pt-br">
 
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
@@ -15,24 +17,46 @@
         integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs"
         crossorigin="anonymous"></script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Generate a PDF</title>
 </head>
 
 <body>
-    <h1>Bem vindo </h1>
-    <div class="content">
-        <label>ID do usuário</label>
-        <input type="number" name="user_id" id="user_id" required maxlength="100" defaultValue='1'/>
-        <button id='gerarPDF'>Clique aqui para gerar o PDF</button>
-    </div>
-    <div class="response">
-        <div id="profile"></div>
-        <div id="goal"></div>
-        <div id="course"></div>
-        <div id="xp"></div>
-        <div id="extraCourse"></div>
-        <div id="socialMedia"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="home.html">CURVI</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">RESUME GENERATOR</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Bem vindo </h1>
+        <label for='user_id'>ID do usuário</label>
+        <div class="row">
+            <div class="col-sm-6">
+                <input type="number" name="user_id" id="user_id" class="form-control" required maxlength="100"
+                    defaultValue='1' />
+            </div>
+            <div class="col replace">
+                <button class="btn btn-primary" id='gerarPDF'>Clique aqui para gerar o PDF</button>
+            </div>
+        </div>
+        <div class="response">
+            <div id="profile"></div>
+            <div id="goal"></div>
+            <div id="course"></div>
+            <div id="xp"></div>
+            <div id="extraCourse"></div>
+            <div id="socialMedia"></div>
+        </div>
     </div>
 </body>
 <script src="script.js"></script>
