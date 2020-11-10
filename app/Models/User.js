@@ -34,9 +34,7 @@ class User extends Model {
   tokens () {
     return this.hasMany('App/Models/Token')
   }
-  images(){
-    return this.hasOne('App/Models/Image')
-  }
+ 
 }
 
 module.exports = User

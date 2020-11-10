@@ -23,6 +23,7 @@ class UserSchema extends Schema {
       table.string('companyStart')
       table.string('companyEnd')
       table.string('companyDescription')   
+      table.string('courses')
       //table.string('password', 60).notNullable()
       table.timestamps()
     })

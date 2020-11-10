@@ -54,7 +54,8 @@ class UserController {
       "companyName",
       "companyStart",
       "companyEnd",
-      "companyDescription"
+      "companyDescription",
+      "courses"
     ])
     const user = await User.create(data)
     return user
