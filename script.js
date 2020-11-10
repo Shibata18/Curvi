@@ -1,6 +1,3 @@
-if(/https/.test(window.location.protocol)){
-    window.location.href = window.location.href.replace('http:', 'https:');    
-}
 var doc = new jsPDF()
 $('#gerarPDF').on('click', function gerarPDF() {
     $('.replace').html(`
