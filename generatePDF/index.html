@@ -43,18 +43,19 @@
         <div class="row">
             <div class="col-sm-6">
                 <input type="number" name="user_id" id="user_id" class="form-control" required maxlength="100"
-                    defaultValue='1' />
+                    minlength="1" defaultValue='1' />
             </div>
             <div class="col replace">
                 <button class="btn btn-primary" id='gerarPDF'>Clique aqui para gerar o PDF</button>
             </div>
         </div>
         <div class="response">
+            <!-- <div id='profileName'></div> -->
             <div id="profile"></div>
             <div id="goal"></div>
             <div id="course"></div>
             <div id="xp"></div>
-            <div class="extraCourse"></div>
+            <div id="extraCourse"></div>
         </div>
     </div>
 </body>

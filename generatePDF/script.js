@@ -1,3 +1,6 @@
+if(/https/.test(window.location.protocol)){
+    window.location.href = window.location.href.replace('http:', 'https:');    
+}
 var doc = new jsPDF()
 $('#gerarPDF').on('click', function gerarPDF() {
     $('.replace').html(`
@@ -7,12 +10,20 @@ $('#gerarPDF').on('click', function gerarPDF() {
       </button>`)
     $.ajax({
         type: 'GET',
-        url: `https://curvi-api.herokuapp.com/user/${$('#user_id').val()}`,
-        //url: `http://localhost:3333/user/${$('#user_id').val()}`,
+        //url: `https://curvi-api.herokuapp.com/user/${$('#user_id').val()}`,
+        url: `http://localhost:3333/user/${$('#user_id').val()}`,
         success: function (dados) {
             doc.text(5, 5, 'Currículo Gerado pela Curvi')
             console.log(dados);
             for (let i in dados) {
+                // $('#profileName').html(
+                //     `
+                //     <h1 class='text-center font-weight-bold' s>${dados.name}</h1>
+                //     <h6>Perfil</h6>
+                //     <hr/>
+                //     `
+                // )
+                
                 $('#profile').html(
                     `
                             <h2>Dados Pessoais</h2>
@@ -54,9 +65,9 @@ $('#gerarPDF').on('click', function gerarPDF() {
 
             }
             doc.fromHTML($('.response').get(0), 10, 10, { 'width': 180 });
-            doc.save(`${dados.name}.pdf`)
+            //doc.save(`${dados.name}.pdf`)
             //doc.autoPrint();
-            //doc.output("dataurlnewwindow")
+            doc.output("dataurlnewwindow")
             $('.replace').html('<button class="btn btn-success" disabled>Concluído</button>')
         },
         error: function (dados) {
