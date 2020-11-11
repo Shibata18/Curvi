@@ -32,26 +32,31 @@ $('#gerarPDF').on('click', function gerarPDF() {
                             <p>Curso: ${dados.courseName}</p> 
                             `)
                 //  doc.text(courses.courseName, 10, 50)
-                $('#xp').html(
-                    `
-                            <h3>Experiências</h3>
-                            <p>${dados.companyOccupation}</p>
-                            <p>${dados.companyStart} - ${dados.companyEnd}</p>  
-                            <p>${dados.companyName}</p>                            
-                            <p>${dados.companyDescription}</p>
-                            `)
+                if ((dados.companyOccupation || dados.companyStart || dados.companyEnd ||
+                    dados.companyName ||
+                    dados.companyDescription)!=null){
+                        $('#xp').html(
+                            `
+                                <h3>Experiências</h3>
+                                <p>${dados.companyOccupation}</p>
+                                <p>${dados.companyStart} - ${dados.companyEnd}</p>  
+                                <p>${dados.companyName}</p>                            
+                                <p>${dados.companyDescription}</p>
+                                `)
+                    }
                 //doc.text(xp.cargo, 10, 100)
                 $('#goal').html(
                     `
                             <h3>Objetivo</h3>
                             <p>${dados.goal}</p> 
                             `)
-                $('#extraCourse').html(
-                    `
-                                <h3>Cursos Complementares</h3>
-                                <p>${dados.courses}</p> 
-                                `)
-
+                    if(dados.course != null){
+                        $('#extraCourse').html(
+                            `
+                            <h3>Cursos Complementares</h3>
+                            <p>${dados.courses}</p> 
+                        `)
+                        }
             }
             doc.fromHTML($('.response').get(0), 10, 10, { 'width': 180 });
             doc.save(`${dados.name}.pdf`)
