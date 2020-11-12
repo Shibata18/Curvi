@@ -20,5 +20,5 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 Route.post('/user','UserController.store')
-//Route.get('/user','UserController.index')
+Route.get('/user','UserController.findByEmail')
 Route.get('/user/:id','UserController.show')

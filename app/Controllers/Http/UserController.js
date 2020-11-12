@@ -75,7 +75,11 @@ class UserController {
     //await user.loadMany(['experience', 'degree', 'extraCourse', 'socialMedia', 'images'])
     return user
   }
-
+  async findByEmail({request}){
+    const user = await User.findByOrFail('email', request.header('email'))
+    //await user.loadMany(['experience', 'degree', 'extraCourse', 'socialMedia', 'images'])
+    return user
+  }
 
   /**
    * Update experience details.
