@@ -39,23 +39,28 @@ class UserController {
    */
   async store({ request, response }) {
     const data = request.only([
-      "name", 
-      "goal", 
-      "email", 
-      "address", 
-      "cellphone", 
-      "state", 
+      "name",
+      "age",
+      "address",
       "city",
+      "state",
+      "cellphone",
+      "email",
+      "linkedln_link",
+      "area",
+      "area_level",
+      "goal",
+      "scholarity",
       "courseName",
       "courseSchool",
-      "courseStartYear",
       "courseEndYear",
-      "companyOccupation",
+      "courses",
       "companyName",
-      "companyStart",
-      "companyEnd",
+      "companyOccupation",
       "companyDescription",
-      "courses"
+      "companyStartEnd",
+      "feedback",
+      "grade"
     ])
     const user = await User.create(data)
     return user
@@ -75,7 +80,7 @@ class UserController {
     //await user.loadMany(['experience', 'degree', 'extraCourse', 'socialMedia', 'images'])
     return user
   }
-  async findByEmail({request}){
+  async findByEmail({ request }) {
     const user = await User.findByOrFail('email', request.header('email'))
     //await user.loadMany(['experience', 'degree', 'extraCourse', 'socialMedia', 'images'])
     return user
