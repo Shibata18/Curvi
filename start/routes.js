@@ -19,6 +19,6 @@ const Route = use('Route')
 /* Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 }) */
-Route.post('/user','UserController.store')
-Route.get('/user','UserController.findByEmail')
+Route.post('/api/user','UserController.store')
+Route.get('/api/user','UserController.findByEmail')
 //Route.get('/user/:id','UserController.show')
