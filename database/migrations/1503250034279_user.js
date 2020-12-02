@@ -26,7 +26,7 @@ class UserSchema extends Schema {
       table.string('companyName')
       table.string('companyStartEnd')
       table.string('companyDescription')   
-      table.string('courses')
+      table.text('courses')
       table.text('feedback').notNullable()
       table.integer("grade").notNullable()
       //table.string('password', 60).notNullable()
