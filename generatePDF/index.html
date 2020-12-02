@@ -39,19 +39,18 @@
     </nav>
     <div class="container">
         <h1>Bem vindo </h1>
-        <label for='user_id'>ID do usuário</label>
+        <label for='user_id'>Email do usuário</label>
         <div class="row">
             <div class="col-sm-6">
-                <input type="number" name="user_id" id="user_id" class="form-control" required maxlength="100"
-                    minlength="1" defaultValue='1' />
+                <input type="text" name="user_id" id="user_id" class="form-control" required   />
             </div>
             <div class="col replace">
                 <button class="btn btn-primary" id='gerarPDF'>Clique aqui para gerar o PDF</button>
             </div>
         </div>
         <div class="response">
-            <!-- <div id='profileName'></div> -->
-            <div id="profile"></div>
+            <div id='profileName'></div> 
+            <div id="profile" class="job"></div>
             <div id="goal"></div>
             <div id="course"></div>
             <div id="xp"></div>

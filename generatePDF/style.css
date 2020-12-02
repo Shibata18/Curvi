@@ -3,3 +3,44 @@
     padding:0;
     font-family: 'Roboto', sans-serif;
 }
+/* SEU NOME AQUI */
+.name{
+
+position: absolute;
+left: 4.75%;
+right: 1.01%;
+top: 1.39%;
+bottom: 88.04%;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 75.7377px;
+line-height: 89px;
+/* identical to box height */
+
+
+color: #414042;
+
+
+}
+/* Sua Profissão Aqui */
+.job{
+
+position: absolute;
+left: 38.47%;
+right: 36%;
+top: 11.49%;
+bottom: 86.01%;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 21px;
+/* identical to box height */
+
+
+color: #58595B;
+}
+
