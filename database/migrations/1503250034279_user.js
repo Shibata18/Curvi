@@ -27,7 +27,7 @@ class UserSchema extends Schema {
       table.string('companyStartEnd')
       table.string('companyDescription')   
       table.text('courses')
-      table.text('cientificResearch')
+      table.string('cientificResearch')
       table.text('feedback')
       table.integer("grade")
       //table.string('password', 60)
