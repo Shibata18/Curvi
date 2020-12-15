@@ -59,6 +59,7 @@ class UserController {
       "companyOccupation",
       "companyDescription",
       "companyStartEnd",
+      "cientificResearch",
       "feedback",
       "grade"
     ])
