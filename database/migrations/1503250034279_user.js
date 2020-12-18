@@ -20,7 +20,7 @@ class UserSchema extends Schema {
       table.string('scholarity').notNullable()
       table.string('courseName').notNullable()
       table.string('courseSchool').notNullable()
-      table.string('linkedln_link')
+      table.string('linkedln_link').notNullable()
       table.string('courseEndYear')
       table.string('companyOccupation')
       table.string('companyName')
