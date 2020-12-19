@@ -16,10 +16,15 @@ module.exports = {
   | Function - Receives the current origin and should return one of the above values.
   |
   */
-  origin: true,
- /*  origin: function (currentOrigin) {
-    return currentOrigin === 'http://localhost:3333'
-  }, */
+  // origin: true,
+  origin: ['http://localhost:3333','http://localhost:3000','https://curviapp.herokuapp.com','https://2341d7cc806e.ngrok.io','https://curvi-api.herokuapp.com'],
+  // origin: function (currentOrigin) {
+  //   if(currentOrigin === 'http://localhost:3333'
+  //   || currentOrigin === 'https://curviapp.herokuapp.com'
+  //   || currentOrigin === 'https://2341d7cc806e.ngrok.io'){
+  //     return currentOrigin;
+  //   }
+  // },
   /*
   |--------------------------------------------------------------------------
   | Methods
