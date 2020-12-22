@@ -18,13 +18,6 @@ module.exports = {
   */
   // origin: true,
   origin: ['http://localhost:3000','https://curviapp.herokuapp.com','https://f06c71549455.ngrok.io','https://curvi-api.herokuapp.com'],
-  // origin: function (currentOrigin) {
-  //   if(currentOrigin === 'http://localhost:3333'
-  //   || currentOrigin === 'https://curviapp.herokuapp.com'
-  //   || currentOrigin === 'https://2341d7cc806e.ngrok.io'){
-  //     return currentOrigin;
-  //   }
-  // },
   /*
   |--------------------------------------------------------------------------
   | Methods
