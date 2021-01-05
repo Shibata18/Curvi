@@ -81,23 +81,15 @@ class UserController {
         .send(err)
     }
   }
-
-  /**
-   * Display a single experience.
-   * GET users/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async show({ params, request, response, view }) { 
-    const user = await User.findOrFail(params.id)
-    return user
-  }
-  async findByEmail({ request }) {
-    const user = await User.findByOrFail('email', request.header('email'))
-    return user
+  async findByEmail({ request,response }) {
+    try {
+      const user = await User.findByOrFail('email', request.header('email'))
+      return user
+    } catch (error) {
+      return response
+        .status(404)
+        .send({message:"Usuário não encontrado"})
+    }
   }
 
     /**
@@ -135,13 +127,17 @@ class UserController {
         "companyStartEnd",
         "cientificResearch",
         "feedback",
-        "grade"
+        "grade",
+        "language",
+        "language_level",
+        "companyNameVolunteer",
+        "companyOccupationVolunteer",
+        "companyDescriptionVolunteer",
+        "companyStartEndVolunteer",
       ])
-      // if user exists don't save
+      
         await user.merge(data)
         await user.save()
-
-      // if user doesn't exist, proceeds with saving him in DB
      
 
       return user
@@ -161,6 +157,15 @@ class UserController {
    * @param {Response} ctx.response
    */
   async destroy({ params, request, response }) {
+    try {
+      const user = await User.findByOrFail('email', request.header('email'))
+      await user.delete()
+      return response.status(202).send({message:"Deletado Com sucesso"})
+    } catch (error) {
+      return response
+        .status(404)
+        .send({message:"Usuário não encontrado"})
+    }
   }
 }
 

@@ -22,6 +22,6 @@ const Route = use('Route')
 Route.post('/api/user','UserController.store')
 Route.get('/api/user','UserController.findByEmail')
 Route.put('/api/user','UserController.update')
-//Route.get('/user/:id','UserController.show')
+Route.delete('/api/user','UserController.destroy')
 // Route.get('/user','UserController.index')
 // https://preview.adonisjs.com/guides/auth/api-guard
