@@ -59,7 +59,13 @@ class UserController {
         "companyStartEnd",
         "cientificResearch",
         "feedback",
-        "grade"
+        "grade",
+        "language",
+        "language_level",
+        "companyNameVolunteer",
+        "companyOccupationVolunteer",
+        "companyDescriptionVolunteer",
+        "companyStartEndVolunteer",
       ])
       // looking for user in database
       const userExists = await User.findBy('email', data.email)
