@@ -1,3 +1,9 @@
+# API - Curvibot
+Utilizado para que o curvibot se comunique com o banco de dados e também a integração com o gerador de currículos.
+
+Desenvolvido utilizando AdonisJS.
+
+
 # Adonis API application
 
 This is the boilerplate for creating an API server in AdonisJs, it comes pre-configured with.
