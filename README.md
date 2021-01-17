@@ -3,6 +3,28 @@ Utilizado para que o curvibot se comunique com o banco de dados e também a inte
 
 Desenvolvido utilizando AdonisJS.
 
+Para rodar a aplicação 
+
+Ter o Node.js instalado
+Para verificar a versão.
+```bash
+node -v
+```
+
+Ter o gerenciador de pacotes do Node.js que é o NPM.
+Para verificar a versão
+```bash
+npm -v
+```
+
+
+Para baixar o adonis 
+
+```bash
+npm install -g  @adonisjs/cli
+```
+
+
 
 # Adonis API application
 
