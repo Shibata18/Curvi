@@ -17,7 +17,7 @@ module.exports = {
   |
   */
   // origin: true,
-  origin: ['https://curviapp.herokuapp.com','https://f06c71549455.ngrok.io'],
+  origin: ['https://curviapp.herokuapp.com', 'https://f06c71549455.ngrok.io'],
   /*
   |--------------------------------------------------------------------------
   | Methods
